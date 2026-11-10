@@ -1,0 +1,249 @@
+/* ==========================================================================
+   TAMBAHAN: dipakai di index.html & tentang.html (load setelah style.css)
+   ========================================================================== */
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* tombol "Lihat Detail" sekarang berupa link <a> */
+a.card-action {
+  display: block;
+  text-align: center;
+  text-decoration: none;
+}
+
+/* ==========================================================================
+   TENTANG - INTRO
+   ========================================================================== */
+.about-hero {
+  min-height: 380px;
+}
+
+.about-section {
+  max-width: 1000px;
+  margin: 3.5rem auto 0;
+  padding: 0 2rem;
+}
+
+.about-section h2 {
+  font-size: 1.8rem;
+  color: var(--primary-dark);
+  font-weight: 800;
+  margin-bottom: 1rem;
+  padding-bottom: 0.6rem;
+  border-bottom: 2px solid var(--border-color);
+}
+
+.about-section p {
+  color: var(--text-main);
+  margin-bottom: 1rem;
+  text-align: justify;
+}
+
+.meaning-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.2rem;
+  margin-top: 1.5rem;
+}
+
+.meaning-card {
+  background: var(--bg-white);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius);
+  padding: 1.4rem;
+  box-shadow: var(--shadow-sm);
+  transition: var(--transition);
+}
+
+.meaning-card:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-md);
+}
+
+.meaning-card .meaning-icon {
+  font-size: 1.8rem;
+  margin-bottom: 0.5rem;
+}
+
+.meaning-card h3 {
+  color: var(--primary-dark);
+  font-size: 1.1rem;
+  margin-bottom: 0.4rem;
+}
+
+.meaning-card p {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  margin: 0;
+  text-align: left;
+}
+
+/* ==========================================================================
+   NAV JENIS KUCING (sticky di bawah navbar)
+   ========================================================================== */
+.breed-nav {
+  position: sticky;
+  top: var(--header-h, 90px);   /* diisi otomatis lewat script di tentang.html */
+  z-index: 90;
+  background: var(--bg-light);
+  border-bottom: 1px solid var(--border-color);
+  margin-top: 3rem;
+}
+
+.breed-nav ul {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 0.8rem 2rem;
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  justify-content: center;
+}
+
+.breed-nav a {
+  display: inline-block;
+  text-decoration: none;
+  color: var(--primary-dark);
+  background: var(--primary-light);
+  padding: 0.35rem 1rem;
+  border-radius: 999px;
+  font-size: 0.85rem;
+  font-weight: 700;
+  transition: var(--transition);
+}
+
+.breed-nav a:hover {
+  background: var(--primary);
+  color: #fff;
+}
+
+/* ==========================================================================
+   DETAIL TIAP RAS
+   ========================================================================== */
+.breed-detail {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 4rem 2rem 1rem;
+  scroll-margin-top: calc(var(--header-h, 90px) + 70px);   /* biar judul nggak ketutup navbar pas loncat */
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2.5rem;
+  align-items: start;
+  border-bottom: 1px dashed var(--border-color);
+}
+
+.breed-detail:nth-of-type(even) .detail-img {
+  order: 2;
+}
+
+.detail-img {
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: var(--shadow-md);
+  border: 1px solid var(--border-color);
+  background: var(--primary-light);
+}
+
+.detail-img img {
+  display: block;
+  width: 100%;
+  height: 380px;
+  object-fit: cover;
+}
+
+.detail-text h2 {
+  font-size: 2rem;
+  color: var(--primary-dark);
+  font-weight: 800;
+  margin-bottom: 0.3rem;
+}
+
+.detail-text .origin {
+  color: var(--accent);
+  font-weight: 700;
+  font-size: 0.9rem;
+  margin-bottom: 1rem;
+}
+
+.detail-text p {
+  margin-bottom: 1rem;
+  color: var(--text-main);
+}
+
+.spec-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 1rem;
+  font-size: 0.9rem;
+}
+
+.spec-table th,
+.spec-table td {
+  text-align: left;
+  padding: 0.5rem 0.7rem;
+  border-bottom: 1px solid var(--primary-light);
+}
+
+.spec-table th {
+  width: 38%;
+  color: var(--primary-dark);
+}
+
+.back-top {
+  display: inline-block;
+  margin-top: 0.3rem;
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--primary-dark);
+  text-decoration: none;
+}
+
+.back-top:hover {
+  color: var(--accent);
+}
+
+@media (max-width: 768px) {
+  .breed-detail {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    padding-top: 3rem;
+  }
+  .breed-detail:nth-of-type(even) .detail-img {
+    order: 0;
+  }
+  .detail-img img {
+    height: 260px;
+  }
+  .breed-nav {
+    position: static;
+  }
+  .breed-detail {
+    scroll-margin-top: calc(var(--header-h, 90px) + 20px);
+  }
+}
+
+
+
+/* Styling khusus search bar di dalam navbar */
+.nav-search .search-box {
+  width: 180px;
+  padding: 6px 12px;
+  font-size: 0.85rem;
+  margin: 0;
+  transition: width 0.3s ease;
+}
+
+/* Biar agak memanjang saat diklik/fokus */
+.nav-search .search-box:focus {
+  width: 240px;
+}
+
+/* Memastikan flexbox navbar menata jarak dengan rapi */
+.nav-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}

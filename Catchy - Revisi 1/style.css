@@ -1,0 +1,405 @@
+:root {
+  --primary: #d9a151;        
+  --primary-dark: #745529;   
+  --primary-light: #f0ca96; 
+  --accent: #bc7d00;       
+  --gold: #fbbf24;       
+  --text-main: #352b15;
+  --text-muted: #857d64;
+  --bg-light: #faf8ff;
+  --bg-white: #fff5db;
+  --border-color: #8a6e07;
+  --shadow-sm: 0 2px 8px rgba(150, 123, 24, 0.08);
+  --shadow-md: 0 8px 24px rgba(125, 104, 25, 0.16);
+  --radius: 14px;
+  --transition: all 0.3s ease;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  color: var(--text-main);
+  background-color: var(--bg-light);
+  line-height: 1.6;
+}
+
+/* ==========================================================================
+   HEADER & NAVBAR
+   ========================================================================== */
+header {
+  background: var(--bg-white);
+  box-shadow: var(--shadow-sm);
+  border-bottom: 3px solid var(--primary);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.nav-container {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0.9rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.8rem;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+  color: var(--primary);
+}
+
+.logo h1 {
+  font-size: 1.6rem;
+  font-weight: 800;
+  line-height: 1;
+}
+
+.logo-icon {
+  background: linear-gradient(135deg, var(--primary-light), var(--primary));
+  width: 58px;
+  height: 58px;
+  border-radius: 70%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.1rem;
+}
+
+.nav-links {
+  display: flex;
+  gap: 1.8rem;
+  list-style: none;
+  flex-wrap: wrap;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: var(--text-main);
+  font-weight: 600;
+  font-size: 0.95rem;
+  padding: 4px 0;
+  border-bottom: 3px solid transparent;
+  transition: var(--transition);
+}
+
+.nav-links a:hover,
+.nav-links a.active {
+  color: var(--primary);
+  border-bottom-color: var(--accent);
+}
+
+/* ==========================================================================
+   HERO (gambar transparan + teks di atasnya)
+   ========================================================================== */
+.hero {
+  position: relative;
+  overflow: hidden;
+  min-height: 460px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 4rem 2rem;
+  color: #fff;
+  background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 60%, #8f670c 100%);
+}
+
+/* gambar di belakang teks, dibuat transparan */
+.hero-img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.3;              /* atur transparansi: 0 (hilang) - 1 (penuh) */
+  mix-blend-mode: luminosity; /* biar gambar nyatu sama warna ungu */
+  pointer-events: none;
+}
+
+.hero::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(circle at 20% 80%, rgba(244, 216, 114, 0.35), transparent 25%);
+  pointer-events: none;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  max-width: 800px;
+}
+
+.hero-tag {
+  display: inline-block;
+  background: var(--gold);
+  color: var(--primary-dark);
+  padding: 0.4rem 1.2rem;
+  border-radius: 999px;
+  font-size: 0.8rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 1.2px;
+  margin-bottom: 1.2rem;
+}
+
+.hero h1 {
+  font-size: clamp(2.2rem, 5vw, 3.4rem);
+  font-weight: 800;
+  line-height: 1.15;
+  margin-bottom: 1rem;
+  text-shadow: 0 3px 14px rgba(0, 0, 0, 0.35);
+}
+
+.hero p {
+  font-size: 1.15rem;
+  color: #fcf8e5;
+  max-width: 650px;
+  margin: 0 auto;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+/* ==========================================================================
+   MAIN & GRID
+   ========================================================================== */
+.main-container {
+  max-width: 1280px;
+  margin: 3rem auto;
+  padding: 0 2rem;
+}
+
+.section-header {
+  margin-bottom: 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  border-bottom: 2px solid var(--border-color);
+  padding-bottom: 1rem;
+}
+
+.section-title {
+  font-size: 1.8rem;
+  color: var(--primary-dark);
+  font-weight: 800;
+}
+
+.breed-count {
+  color: var(--primary-dark);
+  background: var(--primary-light);
+  padding: 0.3rem 0.9rem;
+  border-radius: 999px;
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.breed-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 2rem;
+}
+
+/* ==========================================================================
+   KARTU RAS
+   ========================================================================== */
+.breed-card {
+  background: var(--bg-white);
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+  border: 1px solid var(--border-color);
+  display: flex;
+  flex-direction: column;
+  transition: var(--transition);
+}
+
+.breed-card:hover {
+  transform: translateY(-8px);
+  box-shadow: var(--shadow-md);
+  border-color: var(--primary);
+}
+
+.card-img-wrapper {
+  width: 100%;
+  height: 220px;
+  overflow: hidden;
+  background: var(--primary-light);
+}
+
+.card-img-wrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.breed-card:hover .card-img-wrapper img {
+  transform: scale(1.07);
+}
+
+.card-body {
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.breed-name {
+  font-size: 1.3rem;
+  font-weight: 800;
+  color: var(--primary-dark);
+  margin-bottom: 0.5rem;
+}
+
+.breed-desc {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  margin-bottom: 1.2rem;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.breed-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin-top: auto;
+  margin-bottom: 1.5rem;
+}
+
+.tag {
+  background: var(--primary-light);
+  color: var(--primary-dark);
+  padding: 0.25rem 0.7rem;
+  border-radius: 999px;
+  font-size: 0.75rem;
+  font-weight: 700;
+}
+
+.card-action {
+  width: 100%;
+  padding: 0.8rem;
+  background: transparent;
+  color: var(--primary);
+  border: 2px solid var(--primary);
+  border-radius: 10px;
+  font-weight: 700;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.breed-card:hover .card-action,
+.card-action:hover {
+  background: linear-gradient(135deg, var(--primary), var(--accent));
+  border-color: transparent;
+  color: #fff;
+}
+
+/* ==========================================================================
+   FOOTER
+   ========================================================================== */
+footer {
+  background: var(--primary-dark);
+  color: #ffdb65;
+  padding: 3rem 2rem 1.5rem;
+  margin-top: 5rem;
+  border-top: 4px solid var(--accent);
+}
+
+.footer-container {
+  max-width: 1280px;
+  margin: 0 auto 2rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 2rem;
+}
+
+.footer-col h4 {
+  color: #f9f6f6;
+  margin-bottom: 1rem;
+  font-size: 1.1rem;
+}
+
+.footer-col ul {
+  list-style: none;
+}
+
+.footer-col ul li {
+  margin-bottom: 0.5rem;
+}
+
+.footer-col ul li a {
+  color: #fffa74;
+  text-decoration: none;
+  font-size: 0.9rem;
+  transition: var(--transition);
+}
+
+.footer-col ul li a:hover {
+  color: var(--gold);
+  padding-left: 4px;
+}
+
+.footer-bottom {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding-top: 1.5rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.15);
+  text-align: center;
+  font-size: 0.85rem;
+}
+
+/* ==========================================================================
+   RESPONSIVE
+   ========================================================================== */
+@media (max-width: 768px) {
+  .nav-container {
+    justify-content: center;
+  }
+  .nav-links {
+    justify-content: center;
+    gap: 1rem;
+  }
+  .hero {
+    min-height: 380px;
+    padding: 3rem 1.5rem;
+  }
+}
+
+
+
+/* Styling khusus search bar di dalam navbar */
+.nav-search .search-box {
+  width: 180px;
+  padding: 6px 12px;
+  font-size: 0.85rem;
+  margin: 0;
+  transition: width 0.3s ease;
+}
+
+/* Biar agak memanjang saat diklik/fokus */
+.nav-search .search-box:focus {
+  width: 240px;
+}
+
+/* Memastikan flexbox navbar menata jarak dengan rapi */
+.nav-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
